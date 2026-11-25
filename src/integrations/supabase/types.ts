@@ -14,7 +14,172 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      endorsements_and_referrals: {
+        Row: {
+          candidate_id: string
+          created_at: string
+          endorsement_quote: string | null
+          hiring_status: string
+          id: string
+          mentor_id: string
+          mentorship_id: string
+          partner_company: string | null
+          strength_tags: string[] | null
+        }
+        Insert: {
+          candidate_id: string
+          created_at?: string
+          endorsement_quote?: string | null
+          hiring_status?: string
+          id?: string
+          mentor_id: string
+          mentorship_id: string
+          partner_company?: string | null
+          strength_tags?: string[] | null
+        }
+        Update: {
+          candidate_id?: string
+          created_at?: string
+          endorsement_quote?: string | null
+          hiring_status?: string
+          id?: string
+          mentor_id?: string
+          mentorship_id?: string
+          partner_company?: string | null
+          strength_tags?: string[] | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "endorsements_and_referrals_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "endorsements_and_referrals_mentor_id_fkey"
+            columns: ["mentor_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "endorsements_and_referrals_mentorship_id_fkey"
+            columns: ["mentorship_id"]
+            isOneToOne: false
+            referencedRelation: "mentorships"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      mentorships: {
+        Row: {
+          candidate_id: string
+          created_at: string
+          id: string
+          match_score: number
+          mentor_id: string
+          session_1_completed: boolean
+          session_1_notes: string | null
+          session_2_completed: boolean
+          session_2_notes: string | null
+          session_3_completed: boolean
+          session_3_notes: string | null
+          status: string
+        }
+        Insert: {
+          candidate_id: string
+          created_at?: string
+          id?: string
+          match_score?: number
+          mentor_id: string
+          session_1_completed?: boolean
+          session_1_notes?: string | null
+          session_2_completed?: boolean
+          session_2_notes?: string | null
+          session_3_completed?: boolean
+          session_3_notes?: string | null
+          status?: string
+        }
+        Update: {
+          candidate_id?: string
+          created_at?: string
+          id?: string
+          match_score?: number
+          mentor_id?: string
+          session_1_completed?: boolean
+          session_1_notes?: string | null
+          session_2_completed?: boolean
+          session_2_notes?: string | null
+          session_3_completed?: boolean
+          session_3_notes?: string | null
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "mentorships_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "mentorships_mentor_id_fkey"
+            columns: ["mentor_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          bio: string | null
+          company: string | null
+          created_at: string
+          full_name: string
+          headline: string | null
+          id: string
+          languages: string[] | null
+          origin_country: string | null
+          role: string
+          skills: string[] | null
+          target_location: string | null
+          track: string
+          years_experience: number | null
+        }
+        Insert: {
+          bio?: string | null
+          company?: string | null
+          created_at?: string
+          full_name: string
+          headline?: string | null
+          id?: string
+          languages?: string[] | null
+          origin_country?: string | null
+          role?: string
+          skills?: string[] | null
+          target_location?: string | null
+          track?: string
+          years_experience?: number | null
+        }
+        Update: {
+          bio?: string | null
+          company?: string | null
+          created_at?: string
+          full_name?: string
+          headline?: string | null
+          id?: string
+          languages?: string[] | null
+          origin_country?: string | null
+          role?: string
+          skills?: string[] | null
+          target_location?: string | null
+          track?: string
+          years_experience?: number | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

@@ -28,3 +28,5 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+- PeerBridge demo data (profiles, mentorships, referrals) lives in Lovable Cloud with open demo access; seeding and "Reset Demo Data" run client-side from `src/lib/pb-data.ts` because it is a presentation demo without sign-in.

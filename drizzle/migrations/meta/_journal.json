@@ -1,5 +1,13 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1795596802460,
+      "tag": "0000_peerbridge_schema",
+      "breakpoints": true
+    }
+  ]
 }
